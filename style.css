@@ -948,3 +948,37 @@ button { font: inherit; }
         padding: 20px;
     }
 }
+
+/* Education Timeline Card Size Fix */
+.timeline-card {
+    width: 100%;
+    max-width: 500px;
+    padding: 20px 24px;
+    box-sizing: border-box;
+}
+
+.timeline-item {
+    position: relative;
+    margin-bottom: 25px;
+}
+
+/* Merit Scholarship card */
+.timeline-item:last-child .timeline-card {
+    max-width: 420px;
+    padding: 16px 22px;
+}
+
+.timeline-card h3 {
+    margin-bottom: 10px;
+}
+
+.timeline-card p {
+    line-height: 1.6;
+    margin-bottom: 12px;
+}
+
+.education-status {
+    display: inline-block;
+    margin-top: 5px;
+}
+
