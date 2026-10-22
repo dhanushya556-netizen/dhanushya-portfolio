@@ -977,4 +977,23 @@ button { font: inherit; }
     z-index: 2;
 }
 
+/* Merit Scholarship Only - Timeline Overlap Fix */
+.timeline-item:last-child .timeline-card {
+    margin-left: 12px;
+    width: calc(100% - 12px);
+    box-sizing: border-box;
+}
+
+/* Keep timeline line behind the cards */
+.timeline::before {
+    z-index: 0;
+    pointer-events: none;
+}
+
+.timeline-card {
+    position: relative;
+    z-index: 1;
+}
+
+
 
