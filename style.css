@@ -962,23 +962,19 @@ button { font: inherit; }
     margin-bottom: 25px;
 }
 
-/* Merit Scholarship card */
+
+/* Fix Merit Scholarship timeline overlap */
 .timeline-item:last-child .timeline-card {
+    position: relative;
+    margin-left: 15px;
+    width: calc(100% - 15px);
     max-width: 420px;
-    padding: 16px 22px;
+    box-sizing: border-box;
+    z-index: 1;
 }
 
-.timeline-card h3 {
-    margin-bottom: 10px;
+.timeline-item:last-child .timeline-dot {
+    z-index: 2;
 }
 
-.timeline-card p {
-    line-height: 1.6;
-    margin-bottom: 12px;
-}
-
-.education-status {
-    display: inline-block;
-    margin-top: 5px;
-}
 
