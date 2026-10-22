@@ -1,5 +1,4 @@
-```javascript
-// ===== DARK / LIGHT THEME TOGGLE =====
+
 const themeToggle = document.getElementById('theme-toggle');
 
 if (themeToggle) {
@@ -146,4 +145,4 @@ if (typingText && !reduceMotion) {
 
   window.setTimeout(typeRole, 1800);
 }
-```
+
