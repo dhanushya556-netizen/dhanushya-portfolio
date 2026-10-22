@@ -1,5 +1,4 @@
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap');
-
 :root {
   color-scheme: dark;
   --bg: #10140f;
@@ -141,18 +140,12 @@ button { font: inherit; }
   .stat-card { padding: 18px; }
   .footer-inner { flex-direction: column; text-align: center; }
 }
-
-/* ========================================
-   PROJECT CARDS - PROFESSIONAL STYLE
-======================================== */
-
 .projects-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 24px;
   margin-top: 30px;
 }
-
 .project-card {
   position: relative;
   display: flex;
@@ -166,7 +159,6 @@ button { font: inherit; }
               box-shadow 0.3s ease;
   overflow: hidden;
 }
-
 .project-card::before {
   content: "";
   position: absolute;
@@ -179,60 +171,50 @@ button { font: inherit; }
   transform-origin: left;
   transition: transform 0.3s ease;
 }
-
 .project-card:hover {
   transform: translateY(-8px);
   border-color: var(--accent);
   box-shadow: 0 15px 35px rgba(100, 80, 200, 0.15);
 }
-
 .project-card:hover::before {
   transform: scaleX(1);
 }
-
 .project-top {
   display: flex;
   align-items: center;
   justify-content: space-between;
   margin-bottom: 25px;
 }
-
 .project-number {
   color: var(--accent);
   font-size: 0.9rem;
   font-weight: 700;
 }
-
 .project-mark {
   color: var(--accent);
   font-size: 1.3rem;
   transition: transform 0.3s ease;
 }
-
 .project-card:hover .project-mark {
   transform: translate(3px, -3px);
 }
-
 .project-card h3 {
   color: var(--text);
   font-size: 1.25rem;
   margin-bottom: 14px;
 }
-
 .project-card p {
   color: var(--muted);
   font-size: 0.95rem;
   line-height: 1.8;
   margin-bottom: 20px;
 }
-
 .tag-list {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
   margin-bottom: 24px;
 }
-
 .tag-list span {
   display: inline-block;
   padding: 7px 11px;
@@ -242,26 +224,18 @@ button { font: inherit; }
   background: var(--bg);
   font-size: 0.78rem;
 }
-
 .project-card .button {
   align-self: flex-start;
   margin-top: auto;
 }
-
-/* ========================================
-   MOTIVATIONAL QUOTES SECTION
-======================================== */
-
 #quotes {
   position: relative;
   overflow: hidden;
 }
-
 #quotes .section-heading {
   text-align: center;
   margin-bottom: 25px;
 }
-
 .quote-card {
   position: relative;
   margin-top: 30px;
@@ -274,12 +248,10 @@ button { font: inherit; }
   overflow: hidden;
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
-
 .quote-card:hover {
   border-color: var(--accent);
   box-shadow: 0 15px 40px rgba(100, 80, 200, 0.12);
 }
-
 .quote-card::before {
   content: "“";
   display: block;
@@ -289,7 +261,6 @@ button { font: inherit; }
   line-height: 0.9;
   opacity: 0.7;
 }
-
 .quote-track {
   display: flex;
   align-items: center;
@@ -298,17 +269,14 @@ button { font: inherit; }
   touch-action: pan-y;
   user-select: none;
 }
-
 .quote-slide {
   display: none;
   width: 100%;
   animation: quoteFade 0.45s ease;
 }
-
 .quote-slide.active {
   display: block;
 }
-
 .quote-text {
   color: var(--text);
   font-size: clamp(1.2rem, 3vw, 1.8rem);
@@ -317,14 +285,12 @@ button { font: inherit; }
   margin: 10px auto 20px;
   max-width: 750px;
 }
-
 .quote-slide span {
   display: inline-block;
   color: var(--accent);
   font-size: 0.95rem;
   font-weight: 600;
 }
-
 .quote-controls {
   display: flex;
   align-items: center;
@@ -332,7 +298,6 @@ button { font: inherit; }
   gap: 22px;
   margin-top: 20px;
 }
-
 .quote-controls button {
   display: flex;
   align-items: center;
@@ -348,13 +313,11 @@ button { font: inherit; }
   transition: transform 0.25s ease, background 0.25s ease,
               color 0.25s ease;
 }
-
 .quote-controls button:hover {
   background: var(--accent);
   color: #ffffff;
   transform: scale(1.08);
 }
-
 #quote-count {
   min-width: 65px;
   color: var(--muted);
@@ -362,68 +325,48 @@ button { font: inherit; }
   font-weight: 600;
   font-variant-numeric: tabular-nums;
 }
-
 .swipe-hint {
   color: var(--muted);
   font-size: 0.8rem;
   margin-top: 18px;
   opacity: 0.8;
 }
-
-/* ========================================
-   QUOTE SLIDE ANIMATION
-======================================== */
-
 @keyframes quoteFade {
   from {
     opacity: 0;
     transform: translateX(18px);
   }
-
   to {
     opacity: 1;
     transform: translateX(0);
   }
 }
-
-/* ========================================
-   RESPONSIVE DESIGN
-======================================== */
-
 @media (max-width: 900px) {
   .projects-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
-
 @media (max-width: 600px) {
   .projects-grid {
     grid-template-columns: 1fr;
   }
-
   .project-card {
     padding: 23px;
   }
-
   .quote-card {
     padding: 28px 18px;
   }
-
   .quote-track {
     min-height: 230px;
   }
-
   .quote-text {
     font-size: 1.15rem;
     line-height: 1.8;
   }
-
   .quote-controls {
     gap: 16px;
   }
 }
-
-/* Respect reduced-motion preferences */
 @media (prefers-reduced-motion: reduce) {
   .project-card,
   .project-card::before,
@@ -431,25 +374,19 @@ button { font: inherit; }
   .quote-controls button {
     transition: none;
   }
-
   .quote-slide {
     animation: none;
   }
 }
-
-/* ===== EDUCATION TIMELINE ===== */
-
 .education-section {
     padding: 90px 8%;
     background: var(--bg);
     color: var(--text);
 }
-
 .education-section .section-heading {
     text-align: center;
     margin-bottom: 50px;
 }
-
 .education-section .section-tag {
     display: inline-block;
     color: var(--accent);
@@ -458,30 +395,23 @@ button { font: inherit; }
     letter-spacing: 3px;
     margin-bottom: 12px;
 }
-
 .education-section h2 {
     font-size: clamp(2rem, 4vw, 2.8rem);
     font-weight: 800;
     margin-bottom: 14px;
 }
-
 .education-section h2 span {
     color: var(--accent);
 }
-
 .education-subtitle {
     color: var(--muted);
     line-height: 1.8;
 }
-
 .timeline {
     max-width: 760px;
     margin: 0 auto;
     position: relative;
 }
-
-/* Olive Green Timeline Line */
-
 .timeline::before {
     content: "";
     position: absolute;
@@ -492,15 +422,11 @@ button { font: inherit; }
     background: var(--accent);
     opacity: 0.7;
 }
-
 .timeline-item {
     position: relative;
     padding-left: 42px;
     margin-bottom: 30px;
 }
-
-/* Timeline Dot */
-
 .timeline-dot {
     position: absolute;
     left: 2px;
@@ -512,9 +438,6 @@ button { font: inherit; }
     border: 4px solid var(--bg);
     box-shadow: 0 0 12px var(--accent);
 }
-
-/* Education Card */
-
 .timeline-card {
     padding: 28px;
     background: var(--surface);
@@ -524,12 +447,10 @@ button { font: inherit; }
     transition: transform 0.3s ease,
                 border-color 0.3s ease;
 }
-
 .timeline-card:hover {
     transform: translateY(-5px);
     border-color: var(--accent);
 }
-
 .timeline-year {
     display: inline-block;
     color: var(--accent);
@@ -537,27 +458,21 @@ button { font: inherit; }
     font-weight: 700;
     letter-spacing: 1px;
 }
-
 .timeline-card h3 {
     font-size: 1.35rem;
     margin: 14px 0 8px;
     color: var(--text);
 }
-
 .timeline-card h4 {
     color: var(--accent);
     font-size: 1rem;
     font-weight: 600;
     margin-bottom: 14px;
 }
-
 .timeline-card p {
     color: var(--muted);
     line-height: 1.8;
 }
-
-/* Currently Pursuing Badge */
-
 .education-status {
     display: inline-block;
     margin-top: 16px;
@@ -569,51 +484,37 @@ button { font: inherit; }
     font-size: 0.82rem;
     font-weight: 600;
 }
-
-/* Mobile Responsive */
-
 @media (max-width: 600px) {
     .education-section {
         padding: 65px 6%;
     }
-
     .education-section .section-heading {
         margin-bottom: 35px;
     }
-
     .timeline-item {
         padding-left: 32px;
     }
-
     .timeline-card {
         padding: 20px;
     }
-
     .timeline-card h3 {
         font-size: 1.15rem;
     }
 }
-
-
-/* ===== MY HIGHLIGHTS ===== */
-
 .highlights-section {
     padding: 80px 8%;
     background: var(--bg);
     color: var(--text);
     text-align: center;
 }
-
 .highlights-section h2 {
     font-size: clamp(2rem, 4vw, 2.6rem);
     margin-bottom: 40px;
     font-weight: 800;
 }
-
 .highlights-section h2 span {
     color: var(--accent);
 }
-
 .highlights-container {
     max-width: 1000px;
     margin: auto;
@@ -621,7 +522,6 @@ button { font: inherit; }
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 24px;
 }
-
 .highlight-card {
     padding: 32px 20px;
     background: var(--surface);
@@ -631,18 +531,15 @@ button { font: inherit; }
     transition: transform 0.3s ease,
                 border-color 0.3s ease;
 }
-
 .highlight-card:hover {
     transform: translateY(-7px);
     border-color: var(--accent);
 }
-
 .highlight-icon {
     font-size: 1.8rem;
     color: var(--accent);
     margin-bottom: 14px;
 }
-
 .highlight-card h3 {
     font-size: 2.3rem;
     color: var(--accent);
@@ -654,39 +551,27 @@ button { font: inherit; }
     font-size: 0.95rem;
     line-height: 1.6;
 }
-
-/* Responsive Layout */
-
 @media (max-width: 650px) {
     .highlights-section {
         padding: 60px 6%;
     }
-
     .highlights-container {
         grid-template-columns: 1fr;
         gap: 18px;
     }
-
     .highlight-card {
         padding: 25px 18px;
     }
 }
-
-/* ===== EDUCATION JOURNEY ===== */
-
 .education-section {
     padding: 90px 8%;
     background: var(--bg);
     color: var(--text);
 }
-
-/* Section Heading */
-
 .education-section .section-heading {
     text-align: center;
     margin-bottom: 55px;
 }
-
 .education-section .section-tag {
     display: inline-block;
     color: var(--accent);
@@ -695,33 +580,24 @@ button { font: inherit; }
     letter-spacing: 3px;
     margin-bottom: 14px;
 }
-
 .education-section h2 {
     font-size: clamp(2rem, 4vw, 2.8rem);
     font-weight: 800;
     margin-bottom: 14px;
 }
-
 .education-section h2 span {
     color: var(--accent);
 }
-
 .education-subtitle {
     color: var(--muted);
     font-size: 1rem;
     line-height: 1.8;
 }
-
-/* Timeline Container */
-
 .timeline {
     max-width: 780px;
     margin: 0 auto;
     position: relative;
 }
-
-/* Olive Green Timeline Line */
-
 .timeline::before {
     content: "";
     position: absolute;
@@ -732,21 +608,14 @@ button { font: inherit; }
     background: var(--accent);
     opacity: 0.7;
 }
-
-/* Timeline Items */
-
 .timeline-item {
     position: relative;
     padding-left: 42px;
     margin-bottom: 32px;
 }
-
 .timeline-item:last-child {
     margin-bottom: 0;
 }
-
-/* Timeline Dots */
-
 .timeline-dot {
     position: absolute;
     left: 2px;
@@ -759,9 +628,6 @@ button { font: inherit; }
     box-shadow: 0 0 12px var(--accent);
     z-index: 1;
 }
-
-/* Education Cards */
-
 .timeline-card {
     padding: 28px;
     background: var(--surface);
@@ -772,15 +638,11 @@ button { font: inherit; }
                 border-color 0.3s ease,
                 box-shadow 0.3s ease;
 }
-
 .timeline-card:hover {
     transform: translateY(-5px);
     border-color: var(--accent);
     box-shadow: 0 10px 28px var(--shadow);
 }
-
-/* Year and Labels */
-
 .timeline-year {
     display: inline-block;
     color: var(--accent);
@@ -789,9 +651,6 @@ button { font: inherit; }
     letter-spacing: 1.5px;
     margin-bottom: 8px;
 }
-
-/* Education Title */
-
 .timeline-card h3 {
     font-size: 1.35rem;
     font-weight: 800;
@@ -799,9 +658,6 @@ button { font: inherit; }
     margin: 10px 0;
     line-height: 1.5;
 }
-
-/* School / College Name */
-
 .timeline-card h4 {
     color: var(--accent);
     font-size: 1rem;
@@ -809,17 +665,11 @@ button { font: inherit; }
     line-height: 1.7;
     margin-bottom: 14px;
 }
-
-/* Description */
-
 .timeline-card p {
     color: var(--muted);
     font-size: 0.95rem;
     line-height: 1.9;
 }
-
-/* Status Badge */
-
 .education-status {
     display: inline-block;
     margin-top: 18px;
@@ -831,9 +681,6 @@ button { font: inherit; }
     font-size: 0.8rem;
     font-weight: 700;
 }
-
-/* Subtle Entrance Animation */
-
 @keyframes educationFadeIn {
     from {
         opacity: 0;
@@ -845,7 +692,6 @@ button { font: inherit; }
         transform: translateY(0);
     }
 }
-
 .timeline-item {
     animation: educationFadeIn 0.7s ease both;
 }
@@ -857,9 +703,6 @@ button { font: inherit; }
 .timeline-item:nth-child(3) {
     animation-delay: 0.3s;
 }
-
-/* Mobile Responsive */
-
 @media (max-width: 600px) {
     .education-section {
         padding: 65px 6%;
@@ -895,13 +738,9 @@ button { font: inherit; }
         font-size: 0.9rem;
     }
 }
-
-/* ===== FIX PROJECT SECTION WIDTH ===== */
-
 #projects {
     padding: 70px 6%;
 }
-
 #projects .projects-container,
 #projects .project-grid,
 #projects .projects-grid {
@@ -913,7 +752,6 @@ button { font: inherit; }
     gap: 24px;
     align-items: stretch;
 }
-
 #projects .project-card {
     width: 100%;
     min-width: 0;
@@ -921,8 +759,6 @@ button { font: inherit; }
     padding: 24px;
     border-radius: 16px;
 }
-
-/* Tablet */
 @media (max-width: 900px) {
     #projects .projects-container,
     #projects .project-grid,
@@ -930,8 +766,6 @@ button { font: inherit; }
         grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 }
-
-/* Mobile */
 @media (max-width: 600px) {
     #projects {
         padding: 45px 5%;
@@ -948,9 +782,6 @@ button { font: inherit; }
         padding: 20px;
     }
 }
-
-
-/* FINAL EDUCATION TIMELINE FIX */
 .timeline {
     position: relative;
     isolation: isolate;
@@ -990,10 +821,6 @@ button { font: inherit; }
         padding-left: 32px;
     }
 }
-
-/* ===== PROFESSIONAL ANIMATIONS ===== */
-
-/* Scroll reveal */
 body.animations-ready .reveal {
     opacity: 0;
     transform: translateY(24px);
@@ -1006,8 +833,6 @@ body.animations-ready .reveal.is-visible {
     opacity: 1;
     transform: translateY(0);
 }
-
-/* Typing cursor */
 .typing-heading {
     min-height: 1.4em;
 }
@@ -1023,8 +848,6 @@ body.animations-ready .reveal.is-visible {
         visibility: hidden;
     }
 }
-
-/* Project cards hover */
 .project-card {
     transition:
         transform 0.3s ease,
@@ -1037,7 +860,6 @@ body.animations-ready .reveal.is-visible {
     box-shadow: 0 14px 32px rgba(0, 0, 0, 0.2);
 }
 
-/* Buttons hover */
 .button,
 .theme-toggle,
 .quote-controls button,
@@ -1052,8 +874,6 @@ body.animations-ready .reveal.is-visible {
     transform: translateY(-3px);
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18);
 }
-
-/* Skill cards hover */
 .info-card {
     transition:
         transform 0.3s ease,
@@ -1064,8 +884,6 @@ body.animations-ready .reveal.is-visible {
     transform: translateY(-5px);
     border-color: var(--accent);
 }
-
-/* Respect reduced-motion settings */
 @media (prefers-reduced-motion: reduce) {
     *,
     *::before,
