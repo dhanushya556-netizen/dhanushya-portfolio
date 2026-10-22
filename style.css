@@ -949,51 +949,44 @@ button { font: inherit; }
     }
 }
 
-/* Education Timeline Card Size Fix */
-.timeline-card {
-    width: 100%;
-    max-width: 500px;
-    padding: 20px 24px;
-    box-sizing: border-box;
+
+/* FINAL EDUCATION TIMELINE FIX */
+.timeline {
+    position: relative;
+    isolation: isolate;
+}
+
+.timeline::before {
+    z-index: -1;
+    pointer-events: none;
 }
 
 .timeline-item {
     position: relative;
-    margin-bottom: 25px;
+    padding-left: 42px;
+    margin-bottom: 32px;
 }
 
+.timeline-item:last-child {
+    margin-bottom: 0;
+}
 
-/* Fix Merit Scholarship timeline overlap */
-.timeline-item:last-child .timeline-card {
+.timeline-item .timeline-card {
     position: relative;
-    margin-left: 15px;
-    width: calc(100% - 15px);
-    max-width: 420px;
+    width: 100%;
+    max-width: none;
+    margin-left: 0;
     box-sizing: border-box;
-    z-index: 1;
+    background: var(--surface);
 }
 
-.timeline-item:last-child .timeline-dot {
-    z-index: 2;
-}
-
-/* Merit Scholarship Only - Timeline Overlap Fix */
 .timeline-item:last-child .timeline-card {
-    margin-left: 12px;
-    width: calc(100% - 12px);
-    box-sizing: border-box;
+    margin-left: 0;
+    width: 100%;
 }
 
-/* Keep timeline line behind the cards */
-.timeline::before {
-    z-index: 0;
-    pointer-events: none;
+@media (max-width: 600px) {
+    .timeline-item {
+        padding-left: 32px;
+    }
 }
-
-.timeline-card {
-    position: relative;
-    z-index: 1;
-}
-
-
-
