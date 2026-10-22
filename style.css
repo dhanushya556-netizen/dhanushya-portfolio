@@ -990,3 +990,90 @@ button { font: inherit; }
         padding-left: 32px;
     }
 }
+
+/* ===== PROFESSIONAL ANIMATIONS ===== */
+
+/* Scroll reveal */
+body.animations-ready .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition:
+        opacity 0.7s ease,
+        transform 0.7s ease;
+}
+
+body.animations-ready .reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Typing cursor */
+.typing-heading {
+    min-height: 1.4em;
+}
+
+.typing-cursor {
+    display: inline-block;
+    margin-left: 4px;
+    animation: cursorBlink 0.8s steps(2, start) infinite;
+}
+
+@keyframes cursorBlink {
+    to {
+        visibility: hidden;
+    }
+}
+
+/* Project cards hover */
+.project-card {
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease,
+        border-color 0.3s ease;
+}
+
+.project-card:hover {
+    transform: translateY(-7px);
+    box-shadow: 0 14px 32px rgba(0, 0, 0, 0.2);
+}
+
+/* Buttons hover */
+.button,
+.theme-toggle,
+.quote-controls button,
+.back-to-top {
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        background-color 0.25s ease;
+}
+
+.button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18);
+}
+
+/* Skill cards hover */
+.info-card {
+    transition:
+        transform 0.3s ease,
+        border-color 0.3s ease;
+}
+
+.info-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--accent);
+}
+
+/* Respect reduced-motion settings */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
