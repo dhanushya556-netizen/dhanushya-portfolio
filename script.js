@@ -83,4 +83,85 @@ quoteTrack?.addEventListener("touchend", event => {
   }
 }, { passive: true });
 
+
+
+/* ===== SCROLL REVEAL ANIMATION ===== */
+
+const revealElements = document.querySelectorAll(".reveal");
+const reduceMotion = window.matchMedia(
+    "(prefers-reduced-motion: reduce)"
+).matches;
+
+if (reduceMotion) {
+    revealElements.forEach((element) => {
+        element.classList.add("is-visible");
+    });
+} else {
+    document.body.classList.add("animations-ready");
+
+    const revealObserver = new IntersectionObserver(
+        (entries, observer) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add("is-visible");
+                    observer.unobserve(entry.target);
+                }
+            });
+        },
+        {
+            threshold: 0.12
+        }
+    );
+
+    revealElements.forEach((element) => {
+        revealObserver.observe(element);
+    });
+}
+
+/* ===== TYPING EFFECT ===== */
+
+const typingText = document.getElementById("typing-text");
+
+if (typingText && !reduceMotion) {
+    const roles = [
+        "Aspiring Software Developer",
+        "Computer Science Student",
+        "Future Tech Innovator"
+    ];
+
+    let roleIndex = 0;
+    let characterIndex = roles[0].length;
+    let deleting = true;
+
+    function typeRole() {
+        const currentRole = roles[roleIndex];
+
+        if (deleting) {
+            characterIndex--;
+            typingText.textContent =
+                currentRole.substring(0, characterIndex);
+        } else {
+            characterIndex++;
+            typingText.textContent =
+                currentRole.substring(0, characterIndex);
+        }
+
+        let delay = deleting ? 45 : 85;
+
+        if (deleting && characterIndex === 0) {
+            deleting = false;
+            roleIndex = (roleIndex + 1) % roles.length;
+            delay = 350;
+        } else if (!deleting && characterIndex === roles[roleIndex].length) {
+            deleting = true;
+            delay = 1500;
+        }
+
+        window.setTimeout(typeRole, delay);
+    }
+
+    window.setTimeout(typeRole, 1800);
+}
+
+
 showQuote(0);
