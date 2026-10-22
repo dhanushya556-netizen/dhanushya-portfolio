@@ -1,52 +1,72 @@
-// Dark / light theme toggle
+```javascript
+// ===== DARK / LIGHT THEME TOGGLE =====
 const themeToggle = document.getElementById('theme-toggle');
 
-themeToggle.addEventListener('click', () => {
-  const isLight = document.body.classList.toggle('light-mode');
-  themeToggle.textContent = isLight ? '☾' : '☼';
-  themeToggle.setAttribute('aria-label', isLight ? 'Switch to dark mode' : 'Switch to light mode');
-});
-
-// Back-to-top button appears after scrolling
-const backToTop = document.getElementById('back-to-top');
-
-function updateBackToTop() {
-  backToTop.classList.toggle('visible', window.scrollY > 350);
+if (themeToggle) {
+  themeToggle.addEventListener('click', () => {
+    const isLight = document.body.classList.toggle('light-mode');
+    themeToggle.textContent = isLight ? '☾' : '☼';
+    themeToggle.setAttribute(
+      'aria-label',
+      isLight ? 'Switch to dark mode' : 'Switch to light mode'
+    );
+  });
 }
 
-window.addEventListener('scroll', updateBackToTop, { passive: true });
-updateBackToTop();
+// ===== BACK TO TOP =====
+const backToTop = document.getElementById('back-to-top');
 
-backToTop.addEventListener('click', () => {
-  window.scrollTo({ top: 0, behavior: 'smooth' });
-});
+if (backToTop) {
+  function updateBackToTop() {
+    backToTop.classList.toggle('visible', window.scrollY > 350);
+  }
 
-// Reveal sections/cards as they enter the viewport
+  window.addEventListener('scroll', updateBackToTop, { passive: true });
+  updateBackToTop();
+
+  backToTop.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+}
+
+// ===== SCROLL REVEAL ANIMATION =====
 const revealItems = document.querySelectorAll('.reveal');
+const reduceMotion = window.matchMedia(
+  '(prefers-reduced-motion: reduce)'
+).matches;
 
-if ('IntersectionObserver' in window) {
-  const observer = new IntersectionObserver((entries, currentObserver) => {
+if (reduceMotion) {
+  revealItems.forEach(item => item.classList.add('is-visible'));
+} else if ('IntersectionObserver' in window) {
+  document.body.classList.add('animations-ready');
+
+  const revealObserver = new IntersectionObserver((entries, observer) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         entry.target.classList.add('is-visible');
-        currentObserver.unobserve(entry.target);
+        observer.unobserve(entry.target);
       }
     });
   }, { threshold: 0.12 });
 
-  revealItems.forEach(item => observer.observe(item));
+  revealItems.forEach(item => revealObserver.observe(item));
 } else {
   revealItems.forEach(item => item.classList.add('is-visible'));
 }
 
-// Keep footer year current
-document.getElementById('year').textContent = new Date().getFullYear();
+// ===== FOOTER YEAR =====
+const yearElement = document.getElementById('year');
+
+if (yearElement) {
+  yearElement.textContent = new Date().getFullYear();
+}
+
 // ===== QUOTES SLIDER =====
-const quoteSlides = document.querySelectorAll(".quote-slide");
-const quoteCount = document.getElementById("quote-count");
-const quotePrev = document.getElementById("quote-prev");
-const quoteNext = document.getElementById("quote-next");
-const quoteTrack = document.getElementById("quote-track");
+const quoteSlides = document.querySelectorAll('.quote-slide');
+const quoteCount = document.getElementById('quote-count');
+const quotePrev = document.getElementById('quote-prev');
+const quoteNext = document.getElementById('quote-next');
+const quoteTrack = document.getElementById('quote-track');
 
 let quoteIndex = 0;
 let quoteTouchStart = 0;
@@ -57,25 +77,25 @@ function showQuote(index) {
   quoteIndex = (index + quoteSlides.length) % quoteSlides.length;
 
   quoteSlides.forEach((slide, i) => {
-    slide.classList.toggle("active", i === quoteIndex);
+    slide.classList.toggle('active', i === quoteIndex);
   });
 
   if (quoteCount) {
     quoteCount.textContent =
-      String(quoteIndex + 1).padStart(2, "0") +
-      " / " +
-      String(quoteSlides.length).padStart(2, "0");
+      String(quoteIndex + 1).padStart(2, '0') +
+      ' / ' +
+      String(quoteSlides.length).padStart(2, '0');
   }
 }
 
-quotePrev?.addEventListener("click", () => showQuote(quoteIndex - 1));
-quoteNext?.addEventListener("click", () => showQuote(quoteIndex + 1));
+quotePrev?.addEventListener('click', () => showQuote(quoteIndex - 1));
+quoteNext?.addEventListener('click', () => showQuote(quoteIndex + 1));
 
-quoteTrack?.addEventListener("touchstart", event => {
+quoteTrack?.addEventListener('touchstart', event => {
   quoteTouchStart = event.changedTouches[0].clientX;
 }, { passive: true });
 
-quoteTrack?.addEventListener("touchend", event => {
+quoteTrack?.addEventListener('touchend', event => {
   const distance = event.changedTouches[0].clientX - quoteTouchStart;
 
   if (Math.abs(distance) > 45) {
@@ -83,85 +103,47 @@ quoteTrack?.addEventListener("touchend", event => {
   }
 }, { passive: true });
 
+showQuote(0);
 
-
-/* ===== SCROLL REVEAL ANIMATION ===== */
-
-const revealElements = document.querySelectorAll(".reveal");
-const reduceMotion = window.matchMedia(
-    "(prefers-reduced-motion: reduce)"
-).matches;
-
-if (reduceMotion) {
-    revealElements.forEach((element) => {
-        element.classList.add("is-visible");
-    });
-} else {
-    document.body.classList.add("animations-ready");
-
-    const revealObserver = new IntersectionObserver(
-        (entries, observer) => {
-            entries.forEach((entry) => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add("is-visible");
-                    observer.unobserve(entry.target);
-                }
-            });
-        },
-        {
-            threshold: 0.12
-        }
-    );
-
-    revealElements.forEach((element) => {
-        revealObserver.observe(element);
-    });
-}
-
-/* ===== TYPING EFFECT ===== */
-
-const typingText = document.getElementById("typing-text");
+// ===== TYPING EFFECT =====
+const typingText = document.getElementById('typing-text');
 
 if (typingText && !reduceMotion) {
-    const roles = [
-        "Aspiring Software Developer",
-        "Computer Science Student",
-        "Future Tech Innovator"
-    ];
+  const roles = [
+    'Aspiring Software Developer',
+    'Computer Science Student',
+    'Future Tech Innovator'
+  ];
 
-    let roleIndex = 0;
-    let characterIndex = roles[0].length;
-    let deleting = true;
+  let roleIndex = 0;
+  let characterIndex = roles[0].length;
+  let deleting = true;
 
-    function typeRole() {
-        const currentRole = roles[roleIndex];
+  function typeRole() {
+    const currentRole = roles[roleIndex];
 
-        if (deleting) {
-            characterIndex--;
-            typingText.textContent =
-                currentRole.substring(0, characterIndex);
-        } else {
-            characterIndex++;
-            typingText.textContent =
-                currentRole.substring(0, characterIndex);
-        }
-
-        let delay = deleting ? 45 : 85;
-
-        if (deleting && characterIndex === 0) {
-            deleting = false;
-            roleIndex = (roleIndex + 1) % roles.length;
-            delay = 350;
-        } else if (!deleting && characterIndex === roles[roleIndex].length) {
-            deleting = true;
-            delay = 1500;
-        }
-
-        window.setTimeout(typeRole, delay);
+    if (deleting) {
+      characterIndex--;
+      typingText.textContent = currentRole.substring(0, characterIndex);
+    } else {
+      characterIndex++;
+      typingText.textContent = currentRole.substring(0, characterIndex);
     }
 
-    window.setTimeout(typeRole, 1800);
+    let delay = deleting ? 45 : 85;
+
+    if (deleting && characterIndex === 0) {
+      deleting = false;
+      roleIndex = (roleIndex + 1) % roles.length;
+      delay = 350;
+    } else if (!deleting && characterIndex === roles[roleIndex].length) {
+      deleting = true;
+      delay = 1500;
+    }
+
+    window.setTimeout(typeRole, delay);
+  }
+
+  window.setTimeout(typeRole, 1800);
 }
-
-
-showQuote(0);
+```
